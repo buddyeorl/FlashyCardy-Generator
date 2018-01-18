@@ -1,0 +1,3 @@
+
+history=[{"front":"who was the first president?","back":"George Washington"},{"front":"who is the current president?","back":"Donald Trump"},{"front":"Who was the last president?","back":"Barack Obama"}]; 
+module.exports = history;
