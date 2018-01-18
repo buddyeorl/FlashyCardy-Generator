@@ -97,7 +97,8 @@ function promptSubject(action)
     message: "How do you want to name this group of FlashCards??",
   }]).then(function(answers)
   {
-    subject = answers.subject;
+    //subject = answers.subject;
+    subject = answers.subject.replace(/ /g,"")
     if (action === 'add a new FlashCard')
     {
       createCards();
@@ -205,11 +206,11 @@ function addNewCard(kindOfCard)
     {
       if (kindOfCard === 'cloze')
       {
-        saveFlashCard('clozeCards.txt', cardCloze); //save cloze card into local file
+        saveFlashCard('clozeCards.txt', cardCloze, "Cloze"); //save cloze card into local file
         studyAdvance(); //review current card
       } else
       {
-        saveFlashCard('basicCards.txt', cardBasic); //save flashcard into local file
+        saveFlashCard('basicCards.txt', cardBasic, ""); //save flashcard into local file
         studyBasic(); // review current card
       }
     }
@@ -217,9 +218,9 @@ function addNewCard(kindOfCard)
 }
 
 // ============================ FUNCTION WILL SAVE THE CURRENT FLASH CARD INTO A LOCAL TXT FILE ==========================//
-function saveFlashCard(file, cards)
+function saveFlashCard(file, cards, objectName)
 {
- fs.appendFile(file, "\n\n" + subject +"=" + JSON.stringify(cards) + "; \nsubjectsCloze.push({'" + subject +"':" + subject +"}); \nmodule.exports = " + subject +";", (err) => {
+ fs.appendFile(file, "\n\n" + subject +"=" + JSON.stringify(cards) + "; \nsubjects" + objectName +".push({'" + subject +"':" + subject +"}); \nmodule.exports = " + subject +";", (err) => {
   if (err) throw err;
   console.log("Flashcards saved to " + file);
  });  
@@ -248,7 +249,7 @@ function studyBasic()
     });
   } else
   {
-  readingtest = require("./basicCards.txt");
+  readingtest = require("./basicCards.txt"); // test to try to refresh menu after adding a new flashcard subject 
   savedFlashCards=[];
   cardBasic=[];
   countStudy = 0; 
@@ -281,7 +282,7 @@ function studyAdvance()
     });
   } else
   {
-  readingtest = require("./basicCards.txt");
+  readingtest = require("./basicCards.txt"); // test to try to refresh menu after adding a new flashcard subject 
   savedFlashCards=[]; //reset variable
   cardCloze=[]; //reset variable
   countStudyAdv = 0;  //reset counter

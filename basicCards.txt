@@ -36,3 +36,9 @@ module.exports = asdadsads;
 noIdea=[{"front":"what is your position on global warming?","back":"none"},{"front":"what is your solution for global warming?","back":"none"}]; 
 subjects.push({'noIdea':noIdea}); 
 module.exports = noIdea;
+
+
+
+thissubject=[{"front":"first flashcard","back":"answer1"},{"front":"this flash card2 ","back":"answer2"}]; 
+subjects.push({'thissubject':thissubject}); 
+module.exports = thissubject;
