@@ -1,9 +1,14 @@
+// dependecies //
 var inquirer = require("inquirer");
 var fs = require('fs');
+
+// local dependecies //
 var BasicCard = require("./BasicCard.js");
 var ClozeCard = require("./ClozeCard.js");
 var savedBasic = require("./basicCards.txt"); 
 var savedCloze = require("./clozeCards.txt"); 
+
+// variables //
 var cardBasic=[];
 var cardCloze=[];
 var savedFlashCards=[];
@@ -14,6 +19,9 @@ var countStudy = 0;
 var countStudyAdv = 0;
 
 
+// ============================ FUNCTIONS ==========================//
+
+// ============================MAIN MENU STARTS HERE ==========================//
 function mainMenu()
 {
   inquirer.prompt([
@@ -28,11 +36,11 @@ function mainMenu()
     if (answers.continue === 'add a new FlashCard' || answers.continue === 'add a new Cloze Deletion Card')
     {
       promptSubject(answers.continue);
-    } else if (answers.continue === 'Review saved FlashCards by subject??')
+    } else if (answers.continue === 'Review saved FlashCards by subject??') // READ CONTENT IN basicCards.txt and create a menu with the object values
     {
       for (var i =0; i< Object.keys(subjects).length; i++)
       {
-        savedFlashCards.push(Object.keys(subjects[i])[0]);
+        savedFlashCards.push(Object.keys(subjects[i])[0]); // savedFlashCards holds all the object name inside the basicCards.txt file to display as menu
       }
       inquirer.prompt([
       {
@@ -40,23 +48,23 @@ function mainMenu()
         name: "choiceSavedCard",
         message: "Choose the subject you want to review",
         choices: savedFlashCards
-      }]).then(function(answers)
+      }]).then(function(answers) 
       {
         for (var i =0; i < savedFlashCards.length;i++)
         {
           if (savedFlashCards[i] === answers.choiceSavedCard)
           {
-            console.log(Object.values(subjects[i])[0]);
-            cardBasic = Object.values(subjects[i])[0];
-            studyBasic();
+            //console.log(Object.values(subjects[i])[0]);
+            cardBasic = Object.values(subjects[i])[0]; 
+            studyBasic(); // review the selected subject
           }
         }
       });
-    } else
+    } else  // READ CONTENT IN clozeCards.txt and create a menu with the object values
     {
       for (var i =0; i< Object.keys(subjectsCloze).length; i++)
       {
-        savedFlashCards.push(Object.keys(subjectsCloze[i])[0]);
+        savedFlashCards.push(Object.keys(subjectsCloze[i])[0]); // savedFlashCards holds all the object name inside the clozeCards.txt file to display as menu
       }
       inquirer.prompt([
       {
@@ -70,9 +78,9 @@ function mainMenu()
         {
           if (savedFlashCards[i] === answers.choiceSavedCard)
           {
-            console.log(Object.values(subjectsCloze[i])[0]);
+            //console.log(Object.values(subjectsCloze[i])[0]);
             cardCloze = Object.values(subjectsCloze[i])[0];
-            studyAdvance();
+            studyAdvance(); // review the selected subject
           }
         }
       });
@@ -80,6 +88,7 @@ function mainMenu()
   });
 }
 
+// ============================ Function to create a topic/subject, the topic will become the object name for the flash cards ==========================//
 function promptSubject(action)
 {
   inquirer.prompt([
@@ -99,10 +108,11 @@ function promptSubject(action)
   }); 
 }
 
+// ============================CREATE BASIC FLASH CARDS ==========================//
 
 function createCards()
 {
-  console.log("current subject is: " + subject);
+  console.log("current subject is: " + subject); //display current subject
   console.log("Please complete the following information :");
   inquirer.prompt([
     {
@@ -114,8 +124,7 @@ function createCards()
     }
   ]).then(function(answers) 
   {
-    // initializes the variable newguy to be a programmer object which will
-    // take in all of the user's answers to the questions above
+
     var newCard = new BasicCard(
     answers.front,
     answers.back);
@@ -130,8 +139,12 @@ function createCards()
   });
 }
 
+
+// ============================ CREATE CLOZE CARDS ==========================//
+
 function createClozeCards()
 {
+  console.log("current subject is: " + subject); //display current subject
   console.log("Please complete the following information :");
   inquirer.prompt([
     {
@@ -148,8 +161,8 @@ function createClozeCards()
     var newCard = new ClozeCard(
     answers.full,
     answers.cloze);
-
-    if (newCard.cardIsValid() === true)
+ 
+    if (newCard.cardIsValid() === true) // IF newCard.cardisValid() returns false, the object created will be deleted.
     {
       cardCloze.push(newCard);
       for (var i=0; i<cardCloze.length;i++)
@@ -161,13 +174,13 @@ function createClozeCards()
       addNewCard('cloze');
     } else
     {
-      delete newCard;
+      delete newCard; // deleted invalid cloze card.
       addNewCard('cloze');
     }
   });
 }
 
-
+// ============================ MENU TO ASK USER TO ADD NEW FLASH CARD OR REVIEW THE FLASHCARDS ==========================//
 function addNewCard(kindOfCard)
 {
   inquirer.prompt([
@@ -181,7 +194,6 @@ function addNewCard(kindOfCard)
   {
     if (answers.continue === 'add a new FlashCard')
     {
-      console.log('continue');
       if (kindOfCard === 'cloze')
       {
         createClozeCards();
@@ -193,17 +205,18 @@ function addNewCard(kindOfCard)
     {
       if (kindOfCard === 'cloze')
       {
-        saveFlashCard('clozeCards.txt', cardCloze);
-        studyAdvance();
+        saveFlashCard('clozeCards.txt', cardCloze); //save cloze card into local file
+        studyAdvance(); //review current card
       } else
       {
-        saveFlashCard('basicCards.txt', cardBasic);
-        studyBasic();
+        saveFlashCard('basicCards.txt', cardBasic); //save flashcard into local file
+        studyBasic(); // review current card
       }
     }
   });
 }
 
+// ============================ FUNCTION WILL SAVE THE CURRENT FLASH CARD INTO A LOCAL TXT FILE ==========================//
 function saveFlashCard(file, cards)
 {
  fs.appendFile(file, "\n\n" + subject +"=" + JSON.stringify(cards) + "; \nsubjectsCloze.push({'" + subject +"':" + subject +"}); \nmodule.exports = " + subject +";", (err) => {
@@ -212,6 +225,7 @@ function saveFlashCard(file, cards)
  });  
 }
 
+// ============================ FUNCTION TO REVIEW THE BASIC FLASHCARDS ==========================//
 function studyBasic()
 {
   if (countStudy < cardBasic.length)
@@ -243,6 +257,7 @@ function studyBasic()
 
 }
 
+// ============================ FUNCTION TO REVIEW THE CLOZE DELETION CARDS==========================//
 function studyAdvance()
 {
   
@@ -267,19 +282,16 @@ function studyAdvance()
   } else
   {
   readingtest = require("./basicCards.txt");
-  savedFlashCards=[];
-  cardCloze=[];
-  countStudyAdv = 0; 
-  mainMenu();
+  savedFlashCards=[]; //reset variable
+  cardCloze=[]; //reset variable
+  countStudyAdv = 0;  //reset counter
+  mainMenu(); //go back to mainMenu
   }
 
 }
 
-
-
-
+// ============================MAIN APP STARTS HERE ==========================//
 
 
 mainMenu();
-//createClozeCards();
-//createCards();
+
