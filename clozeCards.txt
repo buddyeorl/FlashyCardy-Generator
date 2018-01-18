@@ -1,0 +1,10 @@
+subjectsCloze =[];
+
+
+superHeroes=[{"cloze":"Bruce Wayne","partial":"......    is batman","fullText":"Bruce Wayne is batman"},{"cloze":"Peter Parker","partial":"......    is Spider Man","fullText":"Peter Parker is Spider Man"}]; 
+subjectsCloze.push({'superHeroes':superHeroes}); 
+module.exports = superHeroes;
+
+worldCapitals=[{"cloze":"London","partial":"......    is the England Capital","fullText":"London is the England Capital"},{"cloze":"Seoul","partial":"......    is the korean Capital","fullText":"Seoul is the korean Capital"},{"cloze":"Paris","partial":"the French capital is     ......","fullText":"the French capital is Paris"}]; 
+subjectsCloze.push({'worldCapitals':worldCapitals}); 
+module.exports = worldCapitals;

@@ -2,7 +2,8 @@ var inquirer = require("inquirer");
 var fs = require('fs');
 var BasicCard = require("./BasicCard.js");
 var ClozeCard = require("./ClozeCard.js");
-var readingtest = require("./basicCards.txt"); 
+var savedBasic = require("./basicCards.txt"); 
+var savedCloze = require("./clozeCards.txt"); 
 var cardBasic=[];
 var cardCloze=[];
 var savedFlashCards=[];
@@ -20,14 +21,14 @@ function mainMenu()
     type: 'list',
     name: "continue",
     message: "What do you want to do???",
-    choices: ['add a new FlashCard', 'add a new Cloze Deletion Card', 'Review saved FlashCards by subject??']
+    choices: ['add a new FlashCard', 'add a new Cloze Deletion Card', 'Review saved FlashCards by subject??','Review saved Cloze deletion Cards by subject??']
   }
   ]).then(function(answers)
   {
     if (answers.continue === 'add a new FlashCard' || answers.continue === 'add a new Cloze Deletion Card')
     {
       promptSubject(answers.continue);
-    } else
+    } else if (answers.continue === 'Review saved FlashCards by subject??')
     {
       for (var i =0; i< Object.keys(subjects).length; i++)
       {
@@ -48,6 +49,30 @@ function mainMenu()
             console.log(Object.values(subjects[i])[0]);
             cardBasic = Object.values(subjects[i])[0];
             studyBasic();
+          }
+        }
+      });
+    } else
+    {
+      for (var i =0; i< Object.keys(subjectsCloze).length; i++)
+      {
+        savedFlashCards.push(Object.keys(subjectsCloze[i])[0]);
+      }
+      inquirer.prompt([
+      {
+        type: 'list',
+        name: "choiceSavedCard",
+        message: "Choose the subject you want to review",
+        choices: savedFlashCards
+      }]).then(function(answers)
+      {
+        for (var i =0; i < savedFlashCards.length;i++)
+        {
+          if (savedFlashCards[i] === answers.choiceSavedCard)
+          {
+            console.log(Object.values(subjectsCloze[i])[0]);
+            cardCloze = Object.values(subjectsCloze[i])[0];
+            studyAdvance();
           }
         }
       });
@@ -168,21 +193,22 @@ function addNewCard(kindOfCard)
     {
       if (kindOfCard === 'cloze')
       {
+        saveFlashCard('clozeCards.txt', cardCloze);
         studyAdvance();
       } else
       {
-        saveFlashCard();
+        saveFlashCard('basicCards.txt', cardBasic);
         studyBasic();
       }
     }
   });
 }
 
-function saveFlashCard()
+function saveFlashCard(file, cards)
 {
- fs.appendFile('basicCards.txt', "\n\n" + subject +"=" + JSON.stringify(cardBasic) + "; \nsubjects.push({'" + subject +"':" + subject +"}); \nmodule.exports = " + subject +";", (err) => {
+ fs.appendFile(file, "\n\n" + subject +"=" + JSON.stringify(cards) + "; \nsubjectsCloze.push({'" + subject +"':" + subject +"}); \nmodule.exports = " + subject +";", (err) => {
   if (err) throw err;
-  console.log("Flashcards saved to basicCards.txt");
+  console.log("Flashcards saved to " + file);
  });  
 }
 
@@ -240,7 +266,11 @@ function studyAdvance()
     });
   } else
   {
+  readingtest = require("./basicCards.txt");
+  savedFlashCards=[];
+  cardCloze=[];
   countStudyAdv = 0; 
+  mainMenu();
   }
 
 }
