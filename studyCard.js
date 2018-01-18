@@ -2,13 +2,16 @@ var inquirer = require("inquirer");
 var fs = require('fs');
 var BasicCard = require("./BasicCard.js");
 var ClozeCard = require("./ClozeCard.js");
+var readingtest = require("./basicCards.txt"); 
 var cardBasic=[];
 var cardCloze=[];
+var savedFlashCards=[];
 var subject = "";
 var countBasic = 0;
 var countCloze = 0;
 var countStudy = 0;
 var countStudyAdv = 0;
+
 
 function mainMenu()
 {
@@ -17,13 +20,37 @@ function mainMenu()
     type: 'list',
     name: "continue",
     message: "What do you want to do???",
-    choices: ['add a new FlashCard', 'add a new Cloze Deletion Card']
+    choices: ['add a new FlashCard', 'add a new Cloze Deletion Card', 'Review saved FlashCards by subject??']
   }
   ]).then(function(answers)
   {
     if (answers.continue === 'add a new FlashCard' || answers.continue === 'add a new Cloze Deletion Card')
     {
       promptSubject(answers.continue);
+    } else
+    {
+      for (var i =0; i< Object.keys(subjects).length; i++)
+      {
+        savedFlashCards.push(Object.keys(subjects[i])[0]);
+      }
+      inquirer.prompt([
+      {
+        type: 'list',
+        name: "choiceSavedCard",
+        message: "Choose the subject you want to review",
+        choices: savedFlashCards
+      }]).then(function(answers)
+      {
+        for (var i =0; i < savedFlashCards.length;i++)
+        {
+          if (savedFlashCards[i] === answers.choiceSavedCard)
+          {
+            console.log(Object.values(subjects[i])[0]);
+            cardBasic = Object.values(subjects[i])[0];
+            studyBasic();
+          }
+        }
+      });
     }
   });
 }
@@ -144,6 +171,7 @@ function addNewCard(kindOfCard)
         studyAdvance();
       } else
       {
+        saveFlashCard();
         studyBasic();
       }
     }
@@ -152,17 +180,14 @@ function addNewCard(kindOfCard)
 
 function saveFlashCard()
 {
- fs.appendFile('basicCards.txt', "\n" + subject +"=" + JSON.stringify(cardBasic) + "; \nmodule.exports = " + subject +";", (err) => {
+ fs.appendFile('basicCards.txt', "\n\n" + subject +"=" + JSON.stringify(cardBasic) + "; \nsubjects.push({'" + subject +"':" + subject +"}); \nmodule.exports = " + subject +";", (err) => {
   if (err) throw err;
   console.log("Flashcards saved to basicCards.txt");
-  var readingtest = require("./basicCards.txt"); 
-  console.log(readingtest[0].front);
  });  
 }
 
 function studyBasic()
 {
-saveFlashCard();
   if (countStudy < cardBasic.length)
   {
     inquirer.prompt([
@@ -183,7 +208,11 @@ saveFlashCard();
     });
   } else
   {
+  readingtest = require("./basicCards.txt");
+  savedFlashCards=[];
+  cardBasic=[];
   countStudy = 0; 
+  mainMenu();
   }
 
 }
@@ -215,6 +244,10 @@ function studyAdvance()
   }
 
 }
+
+
+
+
 
 
 mainMenu();

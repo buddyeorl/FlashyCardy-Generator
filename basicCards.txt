@@ -1,3 +1,38 @@
+subjects=[];
 
 history=[{"front":"who was the first president?","back":"George Washington"},{"front":"who is the current president?","back":"Donald Trump"},{"front":"Who was the last president?","back":"Barack Obama"}]; 
+subjects.push({"history":history});
 module.exports = history;
+
+anatomy=[{"front":"this anatomywho was the first president?","back":"George Washington"},{"front":"who is the current president?","back":"Donald Trump"},{"front":"Who was the last president?","back":"Barack Obama"}]; 
+subjects.push({"anatomy":anatomy});
+module.exports = anatomy;
+
+mathemathics=[{"front":"what is 1 + 1 ?","back":"2"},{"front":"what is the square root of 4?","back":"2"}]; 
+subjects.push({'mathemathics':mathemathics}); 
+module.exports = mathemathics;
+
+
+bitcoin=[{"front":"what is the best crypto?","back":"bitcoin"},{"front":"what is the best exchange for crypto?","back":"coinbase"}]; 
+subjects.push({'bitcoin':bitcoin}); 
+module.exports = bitcoin;
+
+bestTA=[{"front":"Who's your favorite TA?","back":"Sherwin and Frank"},{"front":"What is the lowest survey review you have given to a TA?","back":"10"}]; 
+subjects.push({'bestTA':bestTA}); 
+module.exports = bestTA;
+
+bestCountry=[{"front":"According to the president Trump, what is a shithole country?","back":"a country like haiti or any african country"},{"front":"Do you agree with trump?","back":"no"}]; 
+subjects.push({'bestCountry':bestCountry}); 
+module.exports = bestCountry;
+
+presidents=[{"front":"who was the first president?","back":"George Washington"},{"front":"who's the current president?","back":"Donald Trump"},{"front":"Who was the last president?","back":"Barack Obama"}]; 
+subjects.push({'presidents':presidents}); 
+module.exports = presidents;
+
+asdadsads=[{"front":"i don't know","back":"really"},{"front":"maybe one more","back":"okay"}]; 
+subjects.push({'asdadsads':asdadsads}); 
+module.exports = asdadsads;
+
+noIdea=[{"front":"what is your position on global warming?","back":"none"},{"front":"what is your solution for global warming?","back":"none"}]; 
+subjects.push({'noIdea':noIdea}); 
+module.exports = noIdea;
