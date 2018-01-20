@@ -1,7 +1,7 @@
 # FlashyCardy-Generator
 Flashy Cardy !!!! Yay!!!!
 
-To run this code you will need to install the following dependencies:
+# To run this code you will need to install the following dependencies:
 
 For the menu creator:
 npm install inquirer
@@ -12,15 +12,15 @@ npm install firebase
 to update/write both basicCards.txt and clozeCards.txt files with the new flashcards input by the user to be retrieve later as a menu:
 npm intall fs
 
-after you installed all the dependecies you can test the code two ways:
+# after you installed all the dependecies you can test the code two ways:
 
 1.Open terminal (or command) and write: node studyCard.js
 
 
 2.Open the the flashy Cardy site to test the preloaded firebase Database flash cards (I'll add more (or try to add more) before the assignment due day.... that is tomorrow....) 
 
-
-Below are the assignment instructions I followed, I just added a little twist to the code to make it a little bit interesting, and implemented a firebase Database to be able to show the interaction between node and the browser.
+# later I will update this readme with pictures and better explanations...
+# Below are the assignment instructions I followed, I just added a little twist to the code to make it a little bit interesting, and implemented a firebase Database to be able to show the interaction between node and the browser.
 
 
 
