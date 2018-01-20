@@ -33,3 +33,7 @@ module.exports = thisclozecardfirebasetest;
 testingsubjectforcloze=[{"cloze":"huh?","partial":"cloze quesstion     ......","fullText":"cloze quesstion huh?"},{"cloze":"cloze","partial":"add second     ......    test","fullText":"add second cloze test"}]; 
 subjectsCloze.push({'testingsubjectforcloze':testingsubjectforcloze}); 
 module.exports = testingsubjectforcloze;
+
+thisisanewtestoffirebase=[{"cloze":"my first","partial":"......    question is this","fullText":"my first question is this"},{"cloze":"second question","partial":"my     ......    is this","fullText":"my second question is this"},{"cloze":"last question","partial":"this would be the     ......","fullText":"this would be the last question"}]; 
+subjectsCloze.push({'thisisanewtestoffirebase':thisisanewtestoffirebase}); 
+module.exports = thisisanewtestoffirebase;

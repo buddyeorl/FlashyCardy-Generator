@@ -108,7 +108,7 @@ function promptSubject(action)
   }]).then(function(answers)
   {
     //subject = answers.subject;
-    subject = answers.subject.replace(/ /g,"")
+    subject = answers.subject.replace(/[^A-Za-z\d]/g,"") // this will prevent spaces and special characters to be added
     if (action === 'add a new FlashCard')
     {
       createCards();

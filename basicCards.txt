@@ -54,3 +54,7 @@ module.exports = myfbcard;
 testsubjectforflashcards=[{"front":"test question","back":"test answer"},{"front":"test second question","back":"test second answer"},{"front":"worked?","back":"yes"}]; 
 subjects.push({'testsubjectforflashcards':testsubjectforflashcards}); 
 module.exports = testsubjectforflashcards;
+
+newtotehcollection2342=[{"front":"what is js?","back":"javascript"},{"front":"how do you change the font color in a website?","back":"many ways to do that"},{"front":"do you want to add more questions or are you tired?","back":"im hungry"}]; 
+subjects.push({'newtotehcollection2342':newtotehcollection2342}); 
+module.exports = newtotehcollection2342;

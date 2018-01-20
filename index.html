@@ -1,11 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	
-<script src="basicCards.txt"></script>
-</body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css">
+    <title>Flashy Cardy</title>
+  </head>
+  <body>
+	<header>
+	<div class="p-2 mb-0 mt-0 pt-0 grad text-dark"></div>
+	<div class="p-2 mb-0 mt-0 pt-0 grad text-dark"><P class="text-center"> FLASHY CARDY</P></div>
+	<div class="p-5 mb-0 mt-0 pt-0 grad text-dark" > <p class="text-center"> CLICK ON THE BUTTONS BELOW</p></div>
+	<div class="p-2 mb-0 mt-0 pt-0 bg-grad text-white"></div>
+  	</header>
+  	<container>
+  		<div class='row'>
+  			<div class="col-md-3">
+  				
+  			</div>
+  			<div class="col-md-3 mt-5">
+				 <div class="list-group">
+				  <button id="flashCards" type="button" class="list-group-item list-group-item-success list-group-item-action-">Review Flashcards</button>
+				  <button id="clozeCards" type="button" class="list-group-item list-group-item-primary list-group-item-action-">Review Cloze Deletion cards</button>
+				</div>
+  			</div>
+  			<div class="col-md-3 mt-5">
+  				<div  id="subjects" class="list-group">
+  				</div>
+  			</div>
+  			<div class="col-md-3">
+  				
+  			</div>
+  		</div>
+  		<div id="mainDisplay" class="jumbotron mt-5">
+	  		<div id='front' class='row'></div>
+	  		<div id='back' class='row'></div>
+	  		<div class='row center'>
+	  			<div class="col-md-3"></div>
+	  			<div class="col-md-2">
+	  				<button id="show" class="btn" >Show Front</button>
+	  			</div>
+		  		<div class="col-md-2"></div>
+		  		<div class="col-md-2">
+		  			<button id="next" class="btn" >Next Card</button>
+		  		</div>
+	  			<div class="col-md-3"></div>
+	  		</div>
+		</div>
+
+  	</container>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+   	<script src="https://code.jquery.com/jquery.js"></script>
+    <script src="assets/js/logic.js"></script>
+  </body>
 </html>

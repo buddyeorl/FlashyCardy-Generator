@@ -1,0 +1,29 @@
+header {
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgba(76, 178, 178,0),rgba(76, 178, 178,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(76, 178, 178,0),rgba(76, 178, 178,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(76, 178, 178,0),rgba(76, 178, 178,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(76, 178, 178,0), rgba(76, 178, 178,1)); /*Standard*/
+  height: 220px;
+}
+
+.display-4 {
+	width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+#next {
+float:right;
+}
+
+#front{
+color: blue;
+}
+
+#mainDisplay {
+height:45vh;
+box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2), 0 3px 2px 0 rgba(0,0,0,0.19);
+vertical-align: middle;
+text-align: center;
+
+}
