@@ -42,3 +42,15 @@ module.exports = noIdea;
 thissubject=[{"front":"first flashcard","back":"answer1"},{"front":"this flash card2 ","back":"answer2"}]; 
 subjects.push({'thissubject':thissubject}); 
 module.exports = thissubject;
+
+testingFirebase=[{"front":"this is the first question testing firebase","back":"testing firebase"},{"front":"this is the second question testing firebase","back":"second question"},{"front":"this would be the third i think","back":"third i"}]; 
+subjects.push({'testingFirebase':testingFirebase}); 
+module.exports = testingFirebase;
+
+myfbcard=[{"front":"what is the card?","back":"this is the card"},{"front":"whos your president","back":"i dont know"},{"front":"huh??","back":"yes"}]; 
+subjects.push({'myfbcard':myfbcard}); 
+module.exports = myfbcard;
+
+testsubjectforflashcards=[{"front":"test question","back":"test answer"},{"front":"test second question","back":"test second answer"},{"front":"worked?","back":"yes"}]; 
+subjects.push({'testsubjectforflashcards':testsubjectforflashcards}); 
+module.exports = testsubjectforflashcards;

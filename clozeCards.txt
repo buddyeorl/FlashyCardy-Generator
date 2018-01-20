@@ -8,3 +8,28 @@ module.exports = superHeroes;
 worldCapitals=[{"cloze":"London","partial":"......    is the England Capital","fullText":"London is the England Capital"},{"cloze":"Seoul","partial":"......    is the korean Capital","fullText":"Seoul is the korean Capital"},{"cloze":"Paris","partial":"the French capital is     ......","fullText":"the French capital is Paris"}]; 
 subjectsCloze.push({'worldCapitals':worldCapitals}); 
 module.exports = worldCapitals;
+
+testingclozefirebase=[{"cloze":"first question","partial":"this is the     ......","fullText":"this is the first question"},{"cloze":"second question","partial":"this is the     ......","fullText":"this is the second question"},{"cloze":"the third","partial":"this would be     ......    question","fullText":"this would be the third question"}]; 
+subjectsCloze.push({'testingclozefirebase':testingclozefirebase}); 
+module.exports = testingclozefirebase;
+
+testAgainFirebase=[{"cloze":"this is","partial":"......    the first question","fullText":"this is the first question"},{"cloze":"the second","partial":"this is     ......    question","fullText":"this is the second question"},{"cloze":"the third?","partial":"this would be     ......","fullText":"this would be the third?"}]; 
+subjectsCloze.push({'testAgainFirebase':testAgainFirebase}); 
+module.exports = testAgainFirebase;
+
+thirdTestFB=[{"cloze":"the first","partial":"this is     ......    question","fullText":"this is the first question"},{"cloze":"second question","partial":"this is the     ......","fullText":"this is the second question"},{"cloze":"this is","partial":"......    the third question","fullText":"this is the third question"}]; 
+subjectsCloze.push({'thirdTestFB':thirdTestFB}); 
+module.exports = thirdTestFB;
+
+
+thisisanothertestok=[{"cloze":"for sure","partial":"this question     ......","fullText":"this question for sure"},{"cloze":"other question","partial":"this     ......","fullText":"this other question"}]; 
+subjectsCloze.push({'thisisanothertestok':thisisanothertestok}); 
+module.exports = thisisanothertestok;
+
+thisclozecardfirebasetest=[{"cloze":"another test","partial":"this is     ......","fullText":"this is another test"},{"cloze":"real test","partial":"this is the     ......","fullText":"this is the real test"},{"cloze":"is it","partial":"......    working?","fullText":"is it working?"}]; 
+subjectsCloze.push({'thisclozecardfirebasetest':thisclozecardfirebasetest}); 
+module.exports = thisclozecardfirebasetest;
+
+testingsubjectforcloze=[{"cloze":"huh?","partial":"cloze quesstion     ......","fullText":"cloze quesstion huh?"},{"cloze":"cloze","partial":"add second     ......    test","fullText":"add second cloze test"}]; 
+subjectsCloze.push({'testingsubjectforcloze':testingsubjectforcloze}); 
+module.exports = testingsubjectforcloze;

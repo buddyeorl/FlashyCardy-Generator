@@ -19,6 +19,16 @@ var countStudy = 0;
 var countStudyAdv = 0;
 
 
+// Initialize Firebase
+var firebase = require('firebase').initializeApp({
+  "serviceAccount": "flashyCardy-566cdf3d2f25.json",
+  "databaseURL": "https://flashycardy-44bbd.firebaseio.com"
+});
+
+//set firebase database child
+var ref = firebase.database().ref().child('studyMaterial');
+
+
 // ============================ FUNCTIONS ==========================//
 
 // ============================MAIN MENU STARTS HERE ==========================//
@@ -207,10 +217,12 @@ function addNewCard(kindOfCard)
       if (kindOfCard === 'cloze')
       {
         saveFlashCard('clozeCards.txt', cardCloze, "Cloze"); //save cloze card into local file
+        saveToFirebase("Cloze", cardCloze);
         studyAdvance(); //review current card
       } else
       {
         saveFlashCard('basicCards.txt', cardBasic, ""); //save flashcard into local file
+        saveToFirebase("basicCard", cardBasic);
         studyBasic(); // review current card
       }
     }
@@ -226,6 +238,23 @@ function saveFlashCard(file, cards, objectName)
  });  
 }
 
+function saveToFirebase (type, card)
+{
+  if (type === "Cloze")
+  {
+    var cardNew = [];
+    for (var i = 0; i < Object.keys(card).length; i++)
+    {
+      var clozeCard = { cloze: card[i].cloze, partial:card[i].partial, fullText: card[i].fullText};
+      cardNew[i] = clozeCard;
+      var logsRef= ref.child('clozeCards/' + subject).set(cardNew);
+    }
+    
+  } else
+  {
+    var logsRef= ref.child('flashCards/' + subject).set(card);
+  }
+}
 // ============================ FUNCTION TO REVIEW THE BASIC FLASHCARDS ==========================//
 function studyBasic()
 {
