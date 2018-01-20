@@ -17,7 +17,7 @@ npm intall fs
 1.Open terminal (or command) and write: node studyCard.js
 
 
-2.Open the the flashy Cardy site to test the preloaded firebase Database flash cards (I'll add more (or try to add more) before the assignment due day.... that is tomorrow....) 
+2.Open the the flashy Cardy site (https://buddyeorl.github.io/FlashyCardy-Generator/) to test the preloaded firebase Database flash cards (I'll add more (or try to add more) before the assignment due day.... that is tomorrow....) 
 
 # later I will update this readme with pictures and better explanations...
 # Below are the assignment instructions I followed, I just added a little twist to the code to make it a little bit interesting, and implemented a firebase Database to be able to show the interaction between node and the browser.
